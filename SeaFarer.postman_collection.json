@@ -1,0 +1,352 @@
+{
+	"info": {
+		"_postman_id": "b790e451-69dd-4108-a20f-7414884dc7ee",
+		"name": "SeaFarer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22795821"
+	},
+	"item": [
+		{
+			"name": "Get Token",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " username=1&Password=123456&grant_type=password&mobileid=9cb2fcb2de1c71e8",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://176.9.184.190/token",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllSeafarers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "R3enp_vY4i-xjTp_Wqm9mEi_yEmnODqThWp6uXBmbkeSsjGLc71g9aWP5aaHY3QIMvPuHo2Z0svMyvJrrlEUEAL4czkr7psiDQn7eYg4TnDjUCtqVci8q0vGK7GIzuHC1a_UthcIJiqeL7H4bvDIXKpjZwi9tE_MWgWE25LDIts-UFGvN5MBEuhSbgvMsB4xii9VHfZqAjrl47GMlpwNk98nfj93nojIH1MWdgnDt-go2uy7ug0EFtjlncnfZ-8SvA9apz4Acl_leEsQMkpaZsS0eWI0wCldPQzHSqiEaUbLfHmvL4tRFVANAXc4DE3aWkQnIbhM3mgZ-YK8Pc93oec02G30llN5d4n7hEOfkkNGJLfKuhmS6fJR9T7foSyKugdK8K9mOwigwsq1zNv09tGLARmbrX7VVkr2afS6xsv-MDf91K1lLCLFpmgb-OY0lg6SUTOpCO3iNLoji3qPVJMaae5biHrlu0DzdIP3Yi8PdIwrHmGrAxKUNYQbtKuD44-5Ur3YkJIEGBB10C9oedVFoTQeePPzxNIOK5-d72s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://176.9.184.190/api/MarineServices/GetAllSeafarers?Direction=ltr&InCT",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"MarineServices",
+						"GetAllSeafarers"
+					],
+					"query": [
+						{
+							"key": "Direction",
+							"value": "ltr"
+						},
+						{
+							"key": "InCT",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FillVendor",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "R3enp_vY4i-xjTp_Wqm9mEi_yEmnODqThWp6uXBmbkeSsjGLc71g9aWP5aaHY3QIMvPuHo2Z0svMyvJrrlEUEAL4czkr7psiDQn7eYg4TnDjUCtqVci8q0vGK7GIzuHC1a_UthcIJiqeL7H4bvDIXKpjZwi9tE_MWgWE25LDIts-UFGvN5MBEuhSbgvMsB4xii9VHfZqAjrl47GMlpwNk98nfj93nojIH1MWdgnDt-go2uy7ug0EFtjlncnfZ-8SvA9apz4Acl_leEsQMkpaZsS0eWI0wCldPQzHSqiEaUbLfHmvL4tRFVANAXc4DE3aWkQnIbhM3mgZ-YK8Pc93oec02G30llN5d4n7hEOfkkNGJLfKuhmS6fJR9T7foSyKugdK8K9mOwigwsq1zNv09tGLARmbrX7VVkr2afS6xsv-MDf91K1lLCLFpmgb-OY0lg6SUTOpCO3iNLoji3qPVJMaae5biHrlu0DzdIP3Yi8PdIwrHmGrAxKUNYQbtKuD44-5Ur3YkJIEGBB10C9oedVFoTQeePPzxNIOK5-d72s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://176.9.184.190/api/LegalAffairs/FillVendor?Id=0&text=&Direction=ltr&InCT",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"LegalAffairs",
+						"FillVendor"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "0"
+						},
+						{
+							"key": "text",
+							"value": ""
+						},
+						{
+							"key": "Direction",
+							"value": "ltr"
+						},
+						{
+							"key": "InCT",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FillEmployee",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "R3enp_vY4i-xjTp_Wqm9mEi_yEmnODqThWp6uXBmbkeSsjGLc71g9aWP5aaHY3QIMvPuHo2Z0svMyvJrrlEUEAL4czkr7psiDQn7eYg4TnDjUCtqVci8q0vGK7GIzuHC1a_UthcIJiqeL7H4bvDIXKpjZwi9tE_MWgWE25LDIts-UFGvN5MBEuhSbgvMsB4xii9VHfZqAjrl47GMlpwNk98nfj93nojIH1MWdgnDt-go2uy7ug0EFtjlncnfZ-8SvA9apz4Acl_leEsQMkpaZsS0eWI0wCldPQzHSqiEaUbLfHmvL4tRFVANAXc4DE3aWkQnIbhM3mgZ-YK8Pc93oec02G30llN5d4n7hEOfkkNGJLfKuhmS6fJR9T7foSyKugdK8K9mOwigwsq1zNv09tGLARmbrX7VVkr2afS6xsv-MDf91K1lLCLFpmgb-OY0lg6SUTOpCO3iNLoji3qPVJMaae5biHrlu0DzdIP3Yi8PdIwrHmGrAxKUNYQbtKuD44-5Ur3YkJIEGBB10C9oedVFoTQeePPzxNIOK5-d72s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://176.9.184.190/api/POS/FillEmployee?Id=0&text=&Direction=ltr&InCT",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"POS",
+						"FillEmployee"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "0"
+						},
+						{
+							"key": "text",
+							"value": ""
+						},
+						{
+							"key": "Direction",
+							"value": "ltr"
+						},
+						{
+							"key": "InCT",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActivateAndInActivateSeafarer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "R3enp_vY4i-xjTp_Wqm9mEi_yEmnODqThWp6uXBmbkeSsjGLc71g9aWP5aaHY3QIMvPuHo2Z0svMyvJrrlEUEAL4czkr7psiDQn7eYg4TnDjUCtqVci8q0vGK7GIzuHC1a_UthcIJiqeL7H4bvDIXKpjZwi9tE_MWgWE25LDIts-UFGvN5MBEuhSbgvMsB4xii9VHfZqAjrl47GMlpwNk98nfj93nojIH1MWdgnDt-go2uy7ug0EFtjlncnfZ-8SvA9apz4Acl_leEsQMkpaZsS0eWI0wCldPQzHSqiEaUbLfHmvL4tRFVANAXc4DE3aWkQnIbhM3mgZ-YK8Pc93oec02G30llN5d4n7hEOfkkNGJLfKuhmS6fJR9T7foSyKugdK8K9mOwigwsq1zNv09tGLARmbrX7VVkr2afS6xsv-MDf91K1lLCLFpmgb-OY0lg6SUTOpCO3iNLoji3qPVJMaae5biHrlu0DzdIP3Yi8PdIwrHmGrAxKUNYQbtKuD44-5Ur3YkJIEGBB10C9oedVFoTQeePPzxNIOK5-d72s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://176.9.184.190/api/MarineServices/ActivateAndInActivateSeafarer?Id=1013&InCT&Status=2&EmpId=1",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"MarineServices",
+						"ActivateAndInActivateSeafarer"
+					],
+					"query": [
+						{
+							"key": "Id",
+							"value": "1013"
+						},
+						{
+							"key": "InCT",
+							"value": null
+						},
+						{
+							"key": "Status",
+							"value": "2",
+							"description": "1 to active - 2 to Inactive"
+						},
+						{
+							"key": "EmpId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SaveSeafarer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "R3enp_vY4i-xjTp_Wqm9mEi_yEmnODqThWp6uXBmbkeSsjGLc71g9aWP5aaHY3QIMvPuHo2Z0svMyvJrrlEUEAL4czkr7psiDQn7eYg4TnDjUCtqVci8q0vGK7GIzuHC1a_UthcIJiqeL7H4bvDIXKpjZwi9tE_MWgWE25LDIts-UFGvN5MBEuhSbgvMsB4xii9VHfZqAjrl47GMlpwNk98nfj93nojIH1MWdgnDt-go2uy7ug0EFtjlncnfZ-8SvA9apz4Acl_leEsQMkpaZsS0eWI0wCldPQzHSqiEaUbLfHmvL4tRFVANAXc4DE3aWkQnIbhM3mgZ-YK8Pc93oec02G30llN5d4n7hEOfkkNGJLfKuhmS6fJR9T7foSyKugdK8K9mOwigwsq1zNv09tGLARmbrX7VVkr2afS6xsv-MDf91K1lLCLFpmgb-OY0lg6SUTOpCO3iNLoji3qPVJMaae5biHrlu0DzdIP3Yi8PdIwrHmGrAxKUNYQbtKuD44-5Ur3YkJIEGBB10C9oedVFoTQeePPzxNIOK5-d72s",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"entity\": {\r\n    \"PassPortIssueDate\": \"2023-01-01\",\r\n    \"IDExPiryDate\": \"2025-01-01\",\r\n    \"SeamanBookNO\": \"SB12345\",    \r\n    \"Remarks\": \"Sample remarks\",\r\n    \"EmpId\": 1,\r\n    \"VisaSponsorId\": 5,\r\n    \"VisaIssueDate\": \"2024-05-14T00:00:00\",\r\n    \"VisaExpiryDate\": \"2026-09-12T00:00:00\",\r\n    \"NameOfSpouse\": \"Rody\",\r\n    \"NoOfChildren\": 3,\r\n    \"BodyWeight\": 95,\r\n    \"Height\": 180,\r\n    \"VisaUAEIdNO\": \"32154561\",\r\n    \"NearestAirport\": \"Cairo\",\r\n    \"ResidenceNumber\": \"561561564\",\r\n    \"SkypeID\": \"4156415641\",\r\n    \"PermanentAddressHomeCountry\": \"12442\",\r\n    \"ContactNumberHomeCountry\": \"15845641\",\r\n    \"ContactNameAndNumberDuringEmergenciesUAE\": \"54554\",\r\n    \"ContactNameAndNumberDuringEmergenciesHome\": \"1451541\",\r\n    \"SeamanIssueDate\": \"2024-01-01\",\r\n    \"SeamanExpiryDate\": \"2026-01-01\",\r\n    \"CicpaNO\": \"456415152\",\r\n    \"CicpaIssueDate\": \"2024-01-01\",\r\n    \"CicpaExpiryDate\": \"2026-01-01\",\r\n    \"Declaration\": \"teeeeeeest\",\r\n    \"SignedOffFromAShipDueToMedicalReason\": true,\r\n    \"SignedOffFromAShipDueToMedicalReasonComment\": \"test medical\",\r\n    \"UndergoneAnyMdicalOperation\": null,\r\n    \"UndergoneAnyMdicalOperationComment\": null,\r\n    \"DoctorConsultation\": null,\r\n    \"DoctorConsultationComment\": null,\r\n    \"HealthOrDisabilityProblem\": null,\r\n    \"HealthOrDisabilityProblemComment\": null,\r\n    \"InquiryOrInvolvedMaritimeAccident\": true,\r\n    \"InquiryOrInvolvedMaritimeAccidentComment\": \"car\",\r\n    \"LicenseSuspendedOrRevoked\": null,\r\n    \"LicenseSuspendedOrRevokedComment\": null\r\n  },\r\n  \"Qualifications\": [\r\n    {\r\n      \"DegreeOrCourse\": \"English lvl 1\",\r\n      \"CourseIssueDate\": \"2022-01-01\",\r\n      \"ExpiryDate\": \"2022-06-01\",\r\n      \"MajorOrSubject\":\"tst\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"English lvl 2\",\r\n      \"CourseIssueDate\": \"2023-01-01\",\r\n      \"ExpiryDate\": \"2023-06-01\",\r\n      \"MajorOrSubject\":\"tst\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"STCW\",\r\n      \"CourseIssueDate\": \"2025-01-01\",\r\n      \"ExpiryDate\": \"2025-06-01\",\r\n      \"MajorOrSubject\":\"tst STCW\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":3\r\n    }\r\n  ],\r\n  \"Certificates\": [\r\n    {\r\n      \"Capacity\": \"Safety Training lvl 1\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2022-01-01\",\r\n      \"ExpiryDate\": \"2024-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"high\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"Capacity\": \"Safety Training lvl 2\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2023-01-01\",\r\n      \"ExpiryDate\": \"2024-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"very high\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"Capacity\": \"Driving LICENCE\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2021-01-01\",\r\n      \"ExpiryDate\": \"2027-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"good\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":2\r\n    }\r\n  ],\r\n  \"Languages\": [\r\n    {\r\n      \"Capacity\": \"English\",\r\n      \"Regulation\": \"Fluent\",\r\n      \"IssueDate\": \"2018-01-01\",\r\n      \"ExpiryDate\": \"2028-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"good\",\r\n      \"Country\":\"Egypt\"\r\n    }\r\n  ],\r\n  \"References\": [\r\n    {\r\n      \"PersonName\": \"John Doe\",\r\n      \"CompanyName\": \"CloudSoft5\",\r\n      \"Country\":\"Egypt\",\r\n      \"Fax\":\"2222555\",\r\n      \"EmailId\":\"kkkkk455555\"\r\n    },\r\n    {\r\n      \"PersonName\": \"Robert\",\r\n      \"CompanyName\": \"CloudSoft5\",\r\n      \"Country\":\"Egypt\",\r\n      \"Fax\":\"2514555\",\r\n      \"EmailId\":\"kdddm6555\"\r\n    }\r\n  ],\r\n  \"WorkExperiences\": [\r\n    {\r\n      \"VesselName\": \"MV Ocean\",\r\n      \"VesselType\": \"Chief Engineer\",\r\n      \"Rank\":\"Senior\",\r\n      \"From\": \"2020-01-01\",\r\n      \"To\": \"2022-01-01\",\r\n      \"GRT\":\"tst\",\r\n      \"BHP\":\"tst\",\r\n      \"CompanyName\":\"CloudSoft5\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://176.9.184.190/api/MarineServices/SaveSeafarer?InCT",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"MarineServices",
+						"SaveSeafarer"
+					],
+					"query": [
+						{
+							"key": "Direction",
+							"value": "ltr",
+							"disabled": true
+						},
+						{
+							"key": "InCT",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditSeaFarer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"entity\": {\r\n    \"Id\": 1013,  // 0 for new record, >0 for update\r\n    \"PassPortIssueDate\": \"2023-01-01\",\r\n    \"IDExPiryDate\": \"2025-01-01\",\r\n    \"SeamanBookNO\": \"SB12345\",    \r\n    \"Remarks\": \"Sample remarks\",\r\n    \"EmpId\": 1,\r\n    \"VisaSponsorId\": 5,\r\n    \"VisaIssueDate\": \"2024-05-14T00:00:00\",\r\n    \"VisaExpiryDate\": \"2026-09-12T00:00:00\",\r\n    \"NameOfSpouse\": \"Rody\",\r\n    \"NoOfChildren\": 3,\r\n    \"BodyWeight\": 90,\r\n    \"Height\": 179,\r\n    \"VisaUAEIdNO\": \"32154561\",\r\n    \"NearestAirport\": \"Cairo\",\r\n    \"ResidenceNumber\": \"561561564\",\r\n    \"SkypeID\": \"4156415641\",\r\n    \"PermanentAddressHomeCountry\": \"12442\",\r\n    \"ContactNumberHomeCountry\": \"15845641\",\r\n    \"ContactNameAndNumberDuringEmergenciesUAE\": \"54554\",\r\n    \"ContactNameAndNumberDuringEmergenciesHome\": \"1451541\",\r\n    \"SeamanIssueDate\": \"2024-01-01\",\r\n    \"SeamanExpiryDate\": \"2026-01-01\",\r\n    \"CicpaNO\": \"456415152\",\r\n    \"CicpaIssueDate\": \"2024-01-01\",\r\n    \"CicpaExpiryDate\": \"2026-01-01\",\r\n    \"Declaration\": \"teeeeeeest\",\r\n    \"SignedOffFromAShipDueToMedicalReason\": true,\r\n    \"SignedOffFromAShipDueToMedicalReasonComment\": \"test medical\",\r\n    \"UndergoneAnyMdicalOperation\": null,\r\n    \"UndergoneAnyMdicalOperationComment\": null,\r\n    \"DoctorConsultation\": null,\r\n    \"DoctorConsultationComment\": null,\r\n    \"HealthOrDisabilityProblem\": null,\r\n    \"HealthOrDisabilityProblemComment\": null,\r\n    \"InquiryOrInvolvedMaritimeAccident\": true,\r\n    \"InquiryOrInvolvedMaritimeAccidentComment\": \"car\",\r\n    \"LicenseSuspendedOrRevoked\": true,\r\n    \"LicenseSuspendedOrRevokedComment\": \"Comment\"\r\n  },\r\n  \"Qualifications\": [\r\n    {\r\n      \"DegreeOrCourse\": \"English lvl 1\",\r\n      \"CourseIssueDate\": \"2022-01-01\",\r\n      \"ExpiryDate\": \"2022-06-01\",\r\n      \"MajorOrSubject\":\"tst\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"English lvl 2\",\r\n      \"CourseIssueDate\": \"2023-01-01\",\r\n      \"ExpiryDate\": \"2023-06-01\",\r\n      \"MajorOrSubject\":\"tst\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"English lvl 3\",\r\n      \"CourseIssueDate\": \"2024-01-01\",\r\n      \"ExpiryDate\": \"2024-06-01\",\r\n      \"MajorOrSubject\":\"tst\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"STCW\",\r\n      \"CourseIssueDate\": \"2025-01-01\",\r\n      \"ExpiryDate\": \"2025-06-01\",\r\n      \"MajorOrSubject\":\"tst STCW\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":3\r\n    },\r\n    {\r\n      \"DegreeOrCourse\": \"STCW 2\",\r\n      \"CourseIssueDate\": \"2025-03-01\",\r\n      \"ExpiryDate\": \"2025-07-01\",\r\n      \"MajorOrSubject\":\"tst STCW 2\",\r\n      \"University\" : \"cairo\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":3\r\n    }\r\n  ],\r\n  \"Certificates\": [\r\n    {\r\n      \"Capacity\": \"Safety Training lvl 1\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2022-01-01\",\r\n      \"ExpiryDate\": \"2024-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"high\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"Capacity\": \"Safety Training lvl 2\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2023-01-01\",\r\n      \"ExpiryDate\": \"2024-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"very high\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"Capacity\": \"Safety Training lvl 3\",\r\n      \"Regulation\" : \"tst 2\",\r\n      \"IssueDate\": \"2025-01-01\",\r\n      \"ExpiryDate\": \"2025-03-01\",\r\n      \"IssuingAuthority\":\"Test 2\",\r\n      \"Limitations\" : \"very high\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":1  \r\n    },\r\n    {\r\n      \"Capacity\": \"Driving LICENCE\",\r\n      \"Regulation\" : \"tst\",\r\n      \"IssueDate\": \"2021-01-01\",\r\n      \"ExpiryDate\": \"2027-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"good\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":2\r\n    },\r\n    {\r\n      \"Capacity\": \"high Driving LICENCE\",\r\n      \"Regulation\" : \"tst 2\",\r\n      \"IssueDate\": \"2022-01-01\",\r\n      \"ExpiryDate\": \"2030-01-01\",\r\n      \"IssuingAuthority\":\"Test 2\",\r\n      \"Limitations\" : \"good b\",\r\n      \"Country\":\"Egypt\",\r\n      \"Type\":2\r\n    }\r\n  ],\r\n  \"Languages\": [\r\n    {\r\n      \"Capacity\": \"English\",\r\n      \"Regulation\": \"Fluent\",\r\n      \"IssueDate\": \"2018-01-01\",\r\n      \"ExpiryDate\": \"2028-01-01\",\r\n      \"IssuingAuthority\":\"Test\",\r\n      \"Limitations\" : \"good\",\r\n      \"Country\":\"Egypt\"\r\n    },\r\n    {\r\n      \"Capacity\": \"French\",\r\n      \"Regulation\": \"Good\",\r\n      \"IssueDate\": \"2020-01-01\",\r\n      \"ExpiryDate\": \"2027-01-01\",\r\n      \"IssuingAuthority\":\"Test 2\",\r\n      \"Limitations\" : \"good\",\r\n      \"Country\":\"Egypt\"\r\n    }\r\n  ],\r\n  \"References\": [\r\n    {\r\n      \"PersonName\": \"John Doe\",\r\n      \"CompanyName\": \"CloudSoft6\",\r\n      \"Country\":\"Egypt\",\r\n      \"Fax\":\"2222555\",\r\n      \"EmailId\":\"kkkkk455555\"\r\n    },\r\n    {\r\n      \"PersonName\": \"Robert\",\r\n      \"CompanyName\": \"CloudSoft6\",\r\n      \"Country\":\"Egypt\",\r\n      \"Fax\":\"2514555\",\r\n      \"EmailId\":\"kdddm6555\"\r\n    }\r\n  ],\r\n  \"WorkExperiences\": [\r\n    {\r\n      \"VesselName\": \"MV Ocean 2\",\r\n      \"VesselType\": \"Chief Engineer 2\",\r\n      \"Rank\":\"Senior 2\",\r\n      \"From\": \"2020-01-01\",\r\n      \"To\": \"2022-01-01\",\r\n      \"GRT\":\"tst\",\r\n      \"BHP\":\"tst\",\r\n      \"CompanyName\":\"CloudSoft5\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://176.9.184.190/api/MarineServices/SaveSeafarer?InCT",
+					"protocol": "http",
+					"host": [
+						"176",
+						"9",
+						"184",
+						"190"
+					],
+					"path": [
+						"api",
+						"MarineServices",
+						"SaveSeafarer"
+					],
+					"query": [
+						{
+							"key": "Direction",
+							"value": "ltr",
+							"disabled": true
+						},
+						{
+							"key": "InCT",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
