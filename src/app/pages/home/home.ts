@@ -2,11 +2,12 @@
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import this for Pipes
 import { GetAllSeafarersService } from '../../services/getAllSeafarers/get-all-seafarers-service';
+import { SeafarerCard } from "../../shared/seafarer-card/seafarer-card";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule], 
+  imports: [CommonModule, SeafarerCard], 
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
