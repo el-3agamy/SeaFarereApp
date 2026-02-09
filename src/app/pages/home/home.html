@@ -1,1 +1,61 @@
-<p>home works!</p>
+<!-- home.html -->
+<div class="container">
+  <div class="card-wrapper">
+    @for (item of seaFarers(); track item.Id) {
+    <div class="seafarer-card">
+      <div class="card-header">
+        <span class="code">Code: {{ item.EmployeeCode }}</span>
+        <h2>{{ item.EmployeeName }}</h2>
+        <div class="tag-container">
+            <span class="tag">{{ item.JobName }}</span>
+            <span class="tag">{{ item.Nationality || 'N/A' }}</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="info-row">
+          <span class="label">Sponsor</span>
+          <span class="value">{{ item.SponsorName }}</span>
+        </div>
+        
+        <div class="info-row">
+          <span class="label">Contact</span>
+          <span class="value">{{ item.Phone }} | {{ item.Mobile || 'No Mobile' }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Email</span>
+          <span class="value" style="font-size: 0.8rem;">{{ item.Email }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">National ID</span>
+          <span class="value">{{ item.NationalId }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Passport</span>
+          <span class="value">{{ item.PassportNumber }} (Exp: {{ item.PassportExpireDate | date:'shortDate' }})</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Visa Dates</span>
+          <span class="value">{{ item.VisaIssueDate | date:'shortDate' }} - {{ item.VisaExpiryDate | date:'shortDate' }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="label">Employment</span>
+            <span class="value">{{ item.EmploymentDate | date:'mediumDate' }}</span>
+        </div>
+
+        <div class="info-row">
+            <span class="label">Birth Date / Age</span>
+            <span class="value">{{ item.BirthDate | date:'mediumDate' }} ({{ item.Age }})</span>
+        </div>
+      </div>
+    </div>
+    } @empty {
+    <p>Loading seafarers or no data available...</p>
+    }
+  </div>
+</div>
