@@ -1,0 +1,14 @@
+<section>
+    <h1>
+    Login :
+</h1>
+<form (submit)="$event.preventDefault()">
+    <div>
+        <input #username type="text" placeholder="Enter Your Name" name="username" value="">
+    </div>
+    <div>
+        <input #password type="password" placeholder="Enter Your Password" name="password" value="">
+    </div>
+    <button type="button"(click)="onLoginClick(username.value, password.value)"> SignIn</button>
+</form>
+</section>
