@@ -1,1 +1,433 @@
-<p>add-new-seafarer works!</p>
+<div class="form-page">
+  <header class="form-header">
+    <button class="back-btn" (click)="goBack()">← Back</button>
+    <h1>{{ isEditMode() ? 'Edit Seafarer' : 'Add New Seafarer' }}</h1>
+  </header>
+
+  @if (isLoading()) {
+  <div class="loading-state">
+    <div class="loader"></div>
+    <p>Loading data...</p>
+  </div>
+  } @else {
+  @if (successMessage()) {
+  <div class="alert alert-success">✅ {{ successMessage() }}</div>
+  }
+  @if (errorMessage()) {
+  <div class="alert alert-error">⚠ {{ errorMessage() }}</div>
+  }
+
+  <!-- Info Card: shows grid-matching fields in edit mode -->
+  <!-- @if (isEditMode() && editSeafarerInfo()) {
+  <div class="info-card">
+    <h3 class="info-card-title">📋 Editing Seafarer</h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <span class="info-label">Employee Code</span>
+        <span class="info-value">{{ editSeafarerInfo().EmployeeCode || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Employee Name</span>
+        <span class="info-value">{{ editSeafarerInfo().EmployeeName || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Job Name</span>
+        <span class="info-value">{{ editSeafarerInfo().JobName || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Nationality</span>
+        <span class="info-value">{{ editSeafarerInfo().Nationality || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Sponsor Name</span>
+        <span class="info-value">{{ editSeafarerInfo().SponsorName || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Passport Issue Date</span>
+        <span class="info-value">{{ editSeafarerInfo().PassPortIssueDate || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Visa Issue Date</span>
+        <span class="info-value">{{ editSeafarerInfo().VisaIssueDate || '—' }}</span>
+      </div>
+      <div class="info-item">
+        <span class="info-label">Visa Expiry Date</span>
+        <span class="info-value">{{ editSeafarerInfo().VisaExpiryDate || '—' }}</span>
+      </div>
+    </div>
+  </div>
+  } -->
+
+  <form [formGroup]="seafarerForm" (ngSubmit)="onSubmit()">
+
+    <!-- SECTION: Main Information -->
+    <section class="form-section">
+      <h2 class="section-title">Main Information</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Employee *</label>
+          <select formControlName="EmpId">
+            <option [ngValue]="null" disabled>Select Employee</option>
+            @for (emp of employees(); track emp.Code) {
+            <option [ngValue]="emp.Code">{{ emp.Code }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Visa Sponsor *</label>
+          <select formControlName="VisaSponsorId">
+            <option [ngValue]="null" disabled selected>Select Sponsor</option>
+            @for (sp of sponsors(); track sp.Code) {
+            <option [ngValue]="sp.Code">{{ sp.Code || sp.Code }}</option>
+            }
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Seaman Book No.</label>
+          <input type="text" formControlName="SeamanBookNO" placeholder="SB12345">
+        </div>
+        <div class="form-group">
+          <label>Visa UAE ID No.</label>
+          <input type="text" formControlName="VisaUAEIdNO" placeholder="e.g. 32154561">
+        </div>
+        <div class="form-group">
+          <label>CICPA No.</label>
+          <input type="text" formControlName="CicpaNO" placeholder="e.g. 456415152">
+        </div>
+        <div class="form-group">
+          <label>Residence Number</label>
+          <input type="text" formControlName="ResidenceNumber" placeholder="Residence No.">
+        </div>
+        <div class="form-group">
+          <label>Skype ID</label>
+          <input type="text" formControlName="SkypeID" placeholder="Skype ID">
+        </div>
+        <div class="form-group">
+          <label>Nearest Airport</label>
+          <input type="text" formControlName="NearestAirport" placeholder="e.g. Cairo">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Personal Details -->
+    <section class="form-section">
+      <h2 class="section-title">Personal Details</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Name of Spouse</label>
+          <input type="text" formControlName="NameOfSpouse" placeholder="Spouse name">
+        </div>
+        <div class="form-group">
+          <label>No. of Children</label>
+          <input type="number" formControlName="NoOfChildren" min="0">
+        </div>
+        <div class="form-group">
+          <label>Body Weight (kg)</label>
+          <input type="number" formControlName="BodyWeight" min="0" step="0.1">
+        </div>
+        <div class="form-group">
+          <label>Height (cm)</label>
+          <input type="number" formControlName="Height" min="0">
+        </div>
+        <div class="form-group full-width">
+          <label>Permanent Address (Home Country)</label>
+          <input type="text" formControlName="PermanentAddressHomeCountry" placeholder="Full address">
+        </div>
+        <div class="form-group">
+          <label>Contact Number (Home Country)</label>
+          <input type="text" formControlName="ContactNumberHomeCountry" placeholder="Phone number">
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact (UAE)</label>
+          <input type="text" formControlName="ContactNameAndNumberDuringEmergenciesUAE" placeholder="Name & Number">
+        </div>
+        <div class="form-group">
+          <label>Emergency Contact (Home)</label>
+          <input type="text" formControlName="ContactNameAndNumberDuringEmergenciesHome" placeholder="Name & Number">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Dates & Documents -->
+    <section class="form-section">
+      <h2 class="section-title">Dates & Documents</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Passport Issue Date</label>
+          <input type="date" formControlName="PassPortIssueDate">
+        </div>
+        <div class="form-group">
+          <label>ID Expiry Date</label>
+          <input type="date" formControlName="IDExPiryDate">
+        </div>
+        <div class="form-group">
+          <label>Visa Issue Date</label>
+          <input type="date" formControlName="VisaIssueDate">
+        </div>
+        <div class="form-group">
+          <label>Visa Expiry Date</label>
+          <input type="date" formControlName="VisaExpiryDate">
+        </div>
+        <div class="form-group">
+          <label>Seaman Issue Date</label>
+          <input type="date" formControlName="SeamanIssueDate">
+        </div>
+        <div class="form-group">
+          <label>Seaman Expiry Date</label>
+          <input type="date" formControlName="SeamanExpiryDate">
+        </div>
+        <div class="form-group">
+          <label>CICPA Issue Date</label>
+          <input type="date" formControlName="CicpaIssueDate">
+        </div>
+        <div class="form-group">
+          <label>CICPA Expiry Date</label>
+          <input type="date" formControlName="CicpaExpiryDate">
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Remarks & Declaration -->
+    <section class="form-section">
+      <h2 class="section-title">Remarks & Declaration</h2>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label>Remarks</label>
+          <textarea formControlName="Remarks" rows="3" placeholder="Any remarks..."></textarea>
+        </div>
+        <div class="form-group full-width">
+          <label>Declaration</label>
+          <textarea formControlName="Declaration" rows="3" placeholder="Declaration text..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Medical Declarations -->
+    <section class="form-section">
+      <h2 class="section-title">Medical Declarations</h2>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="SignedOffFromAShipDueToMedicalReason" id="med1">
+          <label for="med1">Signed off from a ship due to medical reason?</label>
+        </div>
+        @if (seafarerForm.get('SignedOffFromAShipDueToMedicalReason')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="SignedOffFromAShipDueToMedicalReasonComment" placeholder="Explain...">
+        </div>
+        }
+      </div>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="UndergoneAnyMdicalOperation" id="med2">
+          <label for="med2">Undergone any medical operation?</label>
+        </div>
+        @if (seafarerForm.get('UndergoneAnyMdicalOperation')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="UndergoneAnyMdicalOperationComment" placeholder="Details...">
+        </div>
+        }
+      </div>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="DoctorConsultation" id="med3">
+          <label for="med3">Doctor consultation?</label>
+        </div>
+        @if (seafarerForm.get('DoctorConsultation')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="DoctorConsultationComment" placeholder="Details...">
+        </div>
+        }
+      </div>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="HealthOrDisabilityProblem" id="med4">
+          <label for="med4">Health or disability problem?</label>
+        </div>
+        @if (seafarerForm.get('HealthOrDisabilityProblem')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="HealthOrDisabilityProblemComment" placeholder="Details...">
+        </div>
+        }
+      </div>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="InquiryOrInvolvedMaritimeAccident" id="med5">
+          <label for="med5">Inquiry or involved in maritime accident?</label>
+        </div>
+        @if (seafarerForm.get('InquiryOrInvolvedMaritimeAccident')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="InquiryOrInvolvedMaritimeAccidentComment" placeholder="Details...">
+        </div>
+        }
+      </div>
+
+      <div class="boolean-group">
+        <div class="checkbox-control">
+          <input type="checkbox" formControlName="LicenseSuspendedOrRevoked" id="med6">
+          <label for="med6">License suspended or revoked?</label>
+        </div>
+        @if (seafarerForm.get('LicenseSuspendedOrRevoked')?.value) {
+        <div class="comment-input">
+          <input type="text" formControlName="LicenseSuspendedOrRevokedComment" placeholder="Details...">
+        </div>
+        }
+      </div>
+    </section>
+
+    <!-- SECTION: Qualifications -->
+    <section class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">Qualifications</h2>
+        <button type="button" class="btn-add-row" (click)="addQualification()">＋ Add</button>
+      </div>
+      @for (q of qualifications.controls; track $index; let i = $index) {
+      <div class="array-row" [formGroup]="q">
+        <div class="form-grid">
+          <div class="form-group"><label>Degree/Course</label><input formControlName="DegreeOrCourse"></div>
+          <div class="form-group"><label>Major/Subject</label><input formControlName="MajorOrSubject"></div>
+          <div class="form-group"><label>University</label><input formControlName="University"></div>
+          <div class="form-group"><label>Country</label><input formControlName="Country"></div>
+          <div class="form-group"><label>Issue Date</label><input type="date" formControlName="CourseIssueDate"></div>
+          <div class="form-group"><label>Expiry Date</label><input type="date" formControlName="ExpiryDate"></div>
+          <div class="form-group">
+            <label>Type</label>
+            <select formControlName="Type">
+              <option [ngValue]="1">Education</option>
+              <option [ngValue]="3">STCW</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-remove-row" (click)="removeQualification(i)">✕ Remove</button>
+      </div>
+      }
+      @if (qualifications.length === 0) {
+      <p class="empty-array">No qualifications added yet.</p>
+      }
+    </section>
+
+    <!-- SECTION: Certificates -->
+    <section class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">Certificates</h2>
+        <button type="button" class="btn-add-row" (click)="addCertificate()">＋ Add</button>
+      </div>
+      @for (c of certificates.controls; track $index; let i = $index) {
+      <div class="array-row" [formGroup]="c">
+        <div class="form-grid">
+          <div class="form-group"><label>Capacity</label><input formControlName="Capacity"></div>
+          <div class="form-group"><label>Regulation</label><input formControlName="Regulation"></div>
+          <div class="form-group"><label>Issuing Authority</label><input formControlName="IssuingAuthority"></div>
+          <div class="form-group"><label>Limitations</label><input formControlName="Limitations"></div>
+          <div class="form-group"><label>Country</label><input formControlName="Country"></div>
+          <div class="form-group"><label>Issue Date</label><input type="date" formControlName="IssueDate"></div>
+          <div class="form-group"><label>Expiry Date</label><input type="date" formControlName="ExpiryDate"></div>
+          <div class="form-group">
+            <label>Type</label>
+            <select formControlName="Type">
+              <option [ngValue]="1">Safety</option>
+              <option [ngValue]="2">License</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="btn-remove-row" (click)="removeCertificate(i)">✕ Remove</button>
+      </div>
+      }
+      @if (certificates.length === 0) {
+      <p class="empty-array">No certificates added yet.</p>
+      }
+    </section>
+
+    <!-- SECTION: Languages -->
+    <section class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">Languages</h2>
+        <button type="button" class="btn-add-row" (click)="addLanguage()">＋ Add</button>
+      </div>
+      @for (l of languages.controls; track $index; let i = $index) {
+      <div class="array-row" [formGroup]="l">
+        <div class="form-grid">
+          <div class="form-group"><label>Language</label><input formControlName="Capacity"></div>
+          <div class="form-group"><label>Level</label><input formControlName="Regulation" placeholder="e.g. Fluent">
+          </div>
+          <div class="form-group"><label>Issuing Authority</label><input formControlName="IssuingAuthority"></div>
+          <div class="form-group"><label>Limitations</label><input formControlName="Limitations"></div>
+          <div class="form-group"><label>Country</label><input formControlName="Country"></div>
+          <div class="form-group"><label>Issue Date</label><input type="date" formControlName="IssueDate"></div>
+          <div class="form-group"><label>Expiry Date</label><input type="date" formControlName="ExpiryDate"></div>
+        </div>
+        <button type="button" class="btn-remove-row" (click)="removeLanguage(i)">✕ Remove</button>
+      </div>
+      }
+      @if (languages.length === 0) {
+      <p class="empty-array">No languages added yet.</p>
+      }
+    </section>
+
+    <!-- SECTION: References -->
+    <section class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">References</h2>
+        <button type="button" class="btn-add-row" (click)="addReference()">＋ Add</button>
+      </div>
+      @for (r of references.controls; track $index; let i = $index) {
+      <div class="array-row" [formGroup]="r">
+        <div class="form-grid">
+          <div class="form-group"><label>Person Name</label><input formControlName="PersonName"></div>
+          <div class="form-group"><label>Company Name</label><input formControlName="CompanyName"></div>
+          <div class="form-group"><label>Country</label><input formControlName="Country"></div>
+          <div class="form-group"><label>Fax</label><input formControlName="Fax"></div>
+          <div class="form-group"><label>Email</label><input formControlName="EmailId"></div>
+        </div>
+        <button type="button" class="btn-remove-row" (click)="removeReference(i)">✕ Remove</button>
+      </div>
+      }
+      @if (references.length === 0) {
+      <p class="empty-array">No references added yet.</p>
+      }
+    </section>
+
+    <!-- SECTION: Work Experiences -->
+    <section class="form-section">
+      <div class="section-header">
+        <h2 class="section-title">Work Experiences</h2>
+        <button type="button" class="btn-add-row" (click)="addWorkExperience()">＋ Add</button>
+      </div>
+      @for (w of workExperiences.controls; track $index; let i = $index) {
+      <div class="array-row" [formGroup]="w">
+        <div class="form-grid">
+          <div class="form-group"><label>Vessel Name</label><input formControlName="VesselName"></div>
+          <div class="form-group"><label>Vessel Type</label><input formControlName="VesselType"></div>
+          <div class="form-group"><label>Rank</label><input formControlName="Rank"></div>
+          <div class="form-group"><label>Company Name</label><input formControlName="CompanyName"></div>
+          <div class="form-group"><label>GRT</label><input formControlName="GRT"></div>
+          <div class="form-group"><label>BHP</label><input formControlName="BHP"></div>
+          <div class="form-group"><label>From</label><input type="date" formControlName="From"></div>
+          <div class="form-group"><label>To</label><input type="date" formControlName="To"></div>
+        </div>
+        <button type="button" class="btn-remove-row" (click)="removeWorkExperience(i)">✕ Remove</button>
+      </div>
+      }
+      @if (workExperiences.length === 0) {
+      <p class="empty-array">No work experiences added yet.</p>
+      }
+    </section>
+
+    <!-- Submit -->
+    <div class="form-actions">
+      <button type="button" class="btn-cancel" (click)="goBack()">Cancel</button>
+      <button type="submit" class="btn-submit" (click)="seafarerService.saveSeafarer(seafarerForm.value)" [disabled]="isSaving()">
+        @if (isSaving()) {
+        <span class="spinner"></span> Saving...
+        } @else {
+        {{ 'Save Seafarer' }}
+        }
+      </button>
+    </div>
+  </form>
+  }
+</div>

@@ -1,20 +1,77 @@
-<!-- home.html -->
-<!-- <div class="container">
-  <div class="card-wrapper">
-    @for (item of seaFarers(); track item.Id) {
-   
-    } @empty {
-    <p>Loading seafarers or no data available...</p>
-    }
-  </div>
-</div> -->
-<div class="container">
-      <div class="card-wrapper">
-        @for (item of seaFarers(); track item.Id) {
-            <!-- Render the component and pass 'item' to the 'data' input -->
-            <app-seafarer-card [data]="item" />
-        } @empty{
-          <p>Loading seafarers or no data available...</p>
-        }
+<div class="home-page">
+  <!-- Header -->
+  <header class="page-header">
+    <div class="header-left">
+      <span class="header-icon">⚓</span>
+      <div>
+        <h1>SeaFarer Management</h1>
+        <p class="header-sub">Manage all seafarer records</p>
       </div>
     </div>
+    <div class="header-actions">
+      <button class="btn btn-primary" (click)="onAddNew()">
+        <span>＋</span> Add New Seafarer
+      </button>
+      <button class="btn btn-outline" (click)="onLogout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Table Section -->
+  <div class="table-container">
+    @if (isLoading()) {
+    <div class="loading-state">
+      <div class="loader"></div>
+      <p>Loading seafarers...</p>
+    </div>
+    } @else if (seaFarers().length === 0) {
+    <div class="empty-state">
+      <span class="empty-icon">🚢</span>
+      <h3>No Seafarers Found</h3>
+      <p>Start by adding a new seafarer record.</p>
+      <button class="btn btn-primary" (click)="onAddNew()">Add New Seafarer</button>
+    </div>
+    } @else {
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Employee Code</th>
+            <th>Employee Name</th>
+            <th>Job Name</th>
+            <th>Nationality</th>
+            <th>Sponsor Name</th>
+            <th>Passport Issue Date</th>
+            <th>Visa Issue Date</th>
+            <th>Visa Expiry Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of seaFarers(); track item.Id; let i = $index) {
+          <tr>
+            <td class="td-index">{{ i + 1 }}</td>
+            <td><span class="badge-code">{{ item.EmployeeCode }}</span></td>
+            <td class="td-name">{{ item.EmployeeName }}</td>
+            <td>{{ item.JobName }}</td>
+            <td>{{ item.Nationality || '—' }}</td>
+            <td>{{ item.SponsorName }}</td>
+            <td>{{ item.PassPortIssueDate | date:'mediumDate' }}</td>
+            <td>{{ item.VisaIssueDate | date:'mediumDate' }}</td>
+            <td>{{ item.VisaExpiryDate | date:'mediumDate' }}</td>
+            <td class="td-actions">
+              <button class="btn-sm btn-edit" (click)="onEdit(item)" title="Edit">✏️ Edit</button>
+              <button class="btn-sm btn-active" (click)="onActivate(item)" title="Activate">✅ Active</button>
+              <button class="btn-sm btn-inactive" (click)="onDeactivate(item)" title="Deactivate">⛔ Inactive</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    <div class="table-footer">
+      <span>Total: {{ seaFarers().length }} seafarers</span>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="backdrop" (click)="close.emit()">
+  <!-- StopPropagation prevents closing the modal when clicking inside the form -->
+  <div class="modal" (click)="$event.stopPropagation()">
+    
+    <div class="modal-header">
+      <h3>Edit Seafarer Details</h3>
+      <button class="close-icon" (click)="close.emit()">&times;</button>
+    </div>
+
+    <form [formGroup]="editForm" (ngSubmit)="onSave()">
+      <div class="modal-body">
+        
+        <div class="field-group">
+          <label>Employee Name</label>
+          <input type="text" formControlName="EmployeeName" placeholder="Enter name">
+        </div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label>Phone Number</label>
+            <input type="text" formControlName="Phone" placeholder="Phone">
+          </div>
+          
+          <div class="field-group">
+            <label>Email Address</label>
+            <input type="email" formControlName="Email" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label>Job Designation</label>
+          <input type="text" formControlName="JobName" placeholder="Job title">
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" (click)="close.emit()">
+          Cancel
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="editForm.invalid">
+          Save Changes
+        </button>
+      </div>
+    </form>
+    
+  </div>
+</div>

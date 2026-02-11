@@ -1,4 +1,4 @@
- <div class="seafarer-card">
+ <!-- <div class="seafarer-card">
       <div class="card-header">
         <span class="code">Code: {{ data().EmployeeCode }}</span>
         <h2>{{ data().EmployeeName }}</h2>
@@ -48,6 +48,40 @@
             <span class="label">Birth Date / Age</span>
             <span class="value">{{ data().BirthDate | date:'mediumDate' }} ({{ data().Age }})</span>
         </div>
-        <button (click)="onAddNewFarerClick()">Add New Seafare</button>
+        <button (click)="onAddNewSeafarerClick()">Add New Seafare</button>
+        <button (click)="onUpdateSeafarerClick()">Add New Seafare</button>
+      </div>
+    </div> -->
+
+    <!-- seafarer-card.html -->
+@if (currentData()) {
+  <div class="seafarer-card">
+    <div class="card-header">
+      <span class="code">Code: {{ currentData().EmployeeCode }}</span>
+      <h2>{{ currentData().EmployeeName }}</h2>
+      <!-- ... (Keep other fields but change data() to currentData()) ... -->
+    </div>
+
+    <div class="card-body">
+      <div class="info-row">
+        <span class="label">Phone</span>
+        <span class="value">{{ currentData().Phone }}</span>
+      </div>
+      <!-- ... -->
+      
+      <div class="button-group">
+        <button class="btn-add" (click)="onAddNewSeafarerClick()">Add New</button>
+        <button class="btn-edit" (click)="openEditPopup()">Edit This Seafarer</button>
       </div>
     </div>
+  </div>
+}
+
+<!-- The Popup Integration -->
+@if (isPopupVisible()) {
+  <app-popup 
+    [initialData]="currentData()" 
+    (close)="isPopupVisible.set(false)"
+    (updatedData)="handleUpdate($event)">
+  </app-popup>
+}
